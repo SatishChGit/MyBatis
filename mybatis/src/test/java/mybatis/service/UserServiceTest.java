@@ -18,8 +18,24 @@ public class UserServiceTest {
 	public void testGetUserId() {
 		User user = userService.getUser(1);
 		Assert.assertNotNull(user);
+		Assert.assertEquals(1, user.getUserId());
 		System.out.println(user);
 	}
+	@Test
+	public void testGetUserId1() {
+		User user = userService.getUser(0);
+		Assert.assertNull(user);
+		System.out.println(user);
+	}
+	@Test
+	public void testInsertUser() {
+		User user = new User();
+		user.setUserId(2);
+		user.setUserName("Monima");
+		user.setPassword("123");
+		userService.insertUser(user);
+	}
+	
 	@AfterClass
 	public static void destry() {
 		userService = null;

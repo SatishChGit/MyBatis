@@ -18,4 +18,16 @@ public class UserService {
 		}
 	}
 
+	public void insertUser(User user) {
+		if (user != null) {
+			SqlSession session = MyBatisUtil.getSessionFactory().openSession();
+			try {
+				UserMapper userMapper = session.getMapper(UserMapper.class);
+				userMapper.insertUser(user);
+			} finally {
+				session.close();
+			}
+		}
+	}
+
 }
